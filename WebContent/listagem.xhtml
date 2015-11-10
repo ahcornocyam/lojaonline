@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/default.xhtml">
+	<ui:define name="content">
+		<p:messages autoUpdate="true" showDetail="true" />
+		<p:growl autoUpdate="true" showDetail="true" />
+		<p:fieldset legend="Produtos">
+			<h:form>
+				<p:dataTable value="#{produtoBean.produtos}" var="item">
+					<p:column headerText="Nome">
+						#{item.nome}
+					</p:column>
+					<p:column headerText="Categoria">
+						#{item.categoria}
+					</p:column>
+					<p:column headerText="Preço">
+						<h:outputText value="#{item.preco}">
+							<f:convertNumber pattern="#,##0.00" locale="pt_BR" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Ações">
+						<p:commandButton action="#{produtoBean.adicionarAoCarrinho(item)}" title="Adicionar ao Carrinho" icon="ui-icon-cart" process="@this" update="@form" />
+						<p:commandButton action="#{produtoBean.editarProduto(item)}" title="Editar produto" icon="ui-icon-pencil" process="@this" update="@form" />
+						<p:commandButton action="#{produtoBean.removerProduto(item)}" title="Remover produto" icon="ui-icon-close" process="@this" update="@form" />
+					</p:column>
+				</p:dataTable>
+				<p:tooltip />
+			</h:form>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
+</html>

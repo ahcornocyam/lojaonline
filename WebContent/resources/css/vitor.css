@@ -1,0 +1,23 @@
+.ui-fieldset{
+	margin-top: 15px;	
+}
+
+#footer{
+	margin-top:15px;
+	display: block;
+	padding:5px;
+	height:80px;
+	background-color:#ccc;
+	color:#383838;
+	overflow:hidden;
+	font-family:Arial;
+}
+
+#footer p{
+	clear:both;	
+	float:left;
+	display:block;
+	width:100%;
+	margin-bottom:5px;
+	text-align:center;
+}

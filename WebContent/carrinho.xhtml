@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/default.xhtml">
+	<ui:define name="content">
+		<p:fieldset legend="Carrinho">
+			<h:form>
+				<p:dataTable value="#{carrinhoBean.carrinho}" var="item">
+					<p:column  headerText="Nome">
+						#{item.nome}
+					</p:column>
+					<p:column headerText="Categoria">
+						#{item.categoria}
+					</p:column>
+					<p:column headerText="Preço">
+						<h:outputText value="#{item.preco}">
+							<f:convertNumber pattern="#,##0.00" locale="pt_BR" />
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:fieldset>
+		<p style="font-family:Arial;#{carrinhoBean.calcularValorTotal() > 0 ? 'color:green;' : ''}">
+			Total da compra:
+			<h:outputText value="#{carrinhoBean.calcularValorTotal()}">
+				<f:convertNumber type="currency" locale="pt_BR" />
+			</h:outputText>
+		</p>
+	</ui:define>
+</ui:composition>
+</html>
