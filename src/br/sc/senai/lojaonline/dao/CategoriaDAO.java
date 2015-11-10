@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import br.sc.senai.lojaonline.exception.ValidacaoException;
 import br.sc.senai.lojaonline.model.Categoria;
 
 @Stateless
@@ -33,4 +34,32 @@ public class CategoriaDAO implements Serializable {
 		eM.persist(categoria);
 
 	}
+
+	public Categoria salvarCategoria( Categoria categoria ) throws ValidacaoException{
+
+		if ( categoria.getNome().length() < 3 ){
+
+			throw new ValidacaoException("Precisa ser maior que 3 o nome da categoria" );
+		}
+
+		if ( categoria.getId() == null ){
+
+			eM.persist( categoria );
+
+		}else{
+
+			eM.merge( categoria );
+
+		}
+
+		return categoria;
+
+	}
+
+	public void excluirCategoria( Categoria categoria ){
+
+		eM.remove( eM.getReference( Categoria.class , categoria.getId() ) );
+
+	}
 }
+

@@ -38,6 +38,7 @@ public class ProdutoDao implements Serializable {
 	}
 
 	public List<Produto> listarProdutos(){
+
 		StringBuilder jpql = new StringBuilder();
 		jpql.append( "SELECT p " );
 		jpql.append( "FROM Produto p " );
@@ -45,12 +46,15 @@ public class ProdutoDao implements Serializable {
 
 		TypedQuery<Produto> tQuery = eM.createQuery( jpql.toString(), Produto.class );
 		List<Produto> produtos = tQuery.getResultList();
+
 		return produtos;
 
 	}
 
 	public void excluirProduto( Produto produto ){
+
 		eM.remove( eM.getReference( Produto.class, produto.getId() ) );
+
 	}
 
 }
