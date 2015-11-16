@@ -6,13 +6,40 @@
       xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition>
+	
 		<p:menubar>
-	        <p:submenu label="Listas" icon="ui-icon-note">
+	        <p:submenu label="Produto" icon="ui-icon-note">
                 <p:menuitem value="Lista de Produtos" outcome="/listagem.xhtml" />
                 <p:menuitem value="Novo Produto" outcome="/cadastroProduto.xhtml" />
+	        </p:submenu>
+	        
+	         <p:submenu label="Categoria" icon="ui-icon-note">
                 <p:menuitem value="Lista de Categorias" outcome="/listagemCategoria.xhtml" />
-                <p:menuitem value="Nova Categoria" outcome="/cadastroCategoria.xhtml" />
+                <p:menuitem value="Nova Categoria" outcome="/cadastroCategoria.xhtml" />                
+	        </p:submenu>
+	        
+	         <p:submenu label="Carrinho" icon="ui-icon-note">                
                 <p:menuitem icon="ui-icon-cart" value="Meu Carrinho" outcome="/carrinho.xhtml" />
+	        </p:submenu>
+	        
+	        <p:submenu label="Despesa" icon="ui-icon-note">                
+                <p:menuitem icon="ui-icon-cart" value="Lista Despesa" outcome="/listagemDespesa.xhtml" />
+                <p:menuitem value="Nova Despesa" outcome="/cadastroDespesa.xhtml" />
+                
+                <p:submenu label="Tipo Despesa">
+	                <p:menuitem icon="ui-icon-cart" value="Lista tipo Depessa" outcome="/listagemTipoDespesa.xhtml" />
+	                <p:menuitem value="Novo Tipo de Despesa" outcome="/cadastroTipoDespesa.xhtml" />
+                </p:submenu>
+	        </p:submenu>
+	        
+	        <p:submenu label="Receita" icon="ui-icon-note">                
+                <p:menuitem icon="ui-icon-cart" value="Lista Receita" outcome="/listagemReceita.xhtml" />
+                <p:menuitem value="Nova Receita" outcome="/cadastroReceita.xhtml" />
+                
+                <p:submenu label="Tipo Resceita">
+	                <p:menuitem icon="ui-icon-cart" value="Lista tipo Receita" outcome="/listagemTipoReceita.xhtml" />
+	                <p:menuitem value="Novo Tipo de Receita" outcome="/cadastroTipoReceita.xhtml" />
+                </p:submenu>
 	        </p:submenu>
  		</p:menubar>
 	</ui:composition>

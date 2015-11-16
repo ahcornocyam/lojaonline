@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/default.xhtml">
+	<ui:define name="content">
+		<p:messages autoUpdate="true" showDetail="true" />
+		<p:growl autoUpdate="true" showDetail="true" />
+		<p:fieldset legend="Cadastro Tipo Receita">
+			<h:form>
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Nome:" />
+					<p:inputText required="false" requiredMessage="Nome obrigatório." value="#{tipoReceitaBean.tipoReceita.nome}" />					
+					<p:commandButton update="@form" process="@form" action="#{tipoReceitaBean.salvar()}" value="Salvar" /> 	
+				</h:panelGrid>
+			</h:form>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
+</html>

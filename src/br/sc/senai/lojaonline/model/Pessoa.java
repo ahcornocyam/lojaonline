@@ -17,22 +17,22 @@ import javax.persistence.TemporalType;
 public class Pessoa {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue( strategy=GenerationType.IDENTITY )
 	@Column(name="id")
 	private Long id;
-	
+
 	@Column(name="nome")
 	private String nome;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_de_nascimento")
 	private Date dataDeNascimento;
-	
+
 	private String documento;
-	
+
 	@OneToOne(mappedBy="pessoa")
 	private Usuario usuario;
-	
+
 	@OneToOne(mappedBy="pessoa")
 	private Cliente cliente;
 
@@ -67,7 +67,7 @@ public class Pessoa {
 	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -108,5 +108,5 @@ public class Pessoa {
 			return false;
 		return true;
 	}
-	
+
 }

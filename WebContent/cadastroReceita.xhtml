@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/default.xhtml">
+	<ui:define name="content">
+		<p:messages autoUpdate="true" showDetail="true" />
+		<p:growl autoUpdate="true" showDetail="true" />
+		<p:fieldset legend="Cadastro de Receita">
+			<h:form>
+				<h:panelGrid columns="2">						
+					<p:outputLabel value="Tipo Receita" />
+					<p:selectOneMenu required="true" converter="omnifaces.SelectItemsConverter" requiredMessage="Tipo receita Obrigaroria." value="#{receitaBean.receita.tipoReceita}">
+						<f:selectItem noSelectionOption="true" 
+									  itemLabel="Selecione um tipo de receita" />
+						<f:selectItems value="#{receitaBean.tipoReceitas.tipoReceitas}" 
+						var="item" itemLabel="#{item.nome}" itemValue="#{item}"/>
+					</p:selectOneMenu>
+					<p:outputLabel value="Data:"/>
+					<p:inputText required="true" requiredMessage="Data Obrigatória" value="#{receitaBean.receita.data}">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</p:inputText>
+					 <p:outputLabel value="Descrição:" />
+					<p:inputTextarea required="true" requiredMessage="Descrição Obrigatória " value="#{receitaBean.receita.descricao}" />
+					<p:outputLabel value="Valor:" />
+					<p:inputText required="true" requiredMessage="Valor Obrigatório." value="#{receitaBean.receita.valor}" />
+					<h:outputText value="" />
+					<p:commandButton update="@form" process="@form" action="#{receitaBean.Salvar()}" value="Salvar" /> 	
+				</h:panelGrid>
+			</h:form>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
+</html>

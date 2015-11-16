@@ -8,15 +8,15 @@
 	<ui:define name="content">
 		<p:messages autoUpdate="true" showDetail="true" />
 		<p:growl autoUpdate="true" showDetail="true" />
-		<p:fieldset legend="Categorias">
+		<p:fieldset legend="Tipo Despesas">
 			<h:form>
-				<p:dataTable value="#{categoriaBean.categorias}" var="item">
+				<p:dataTable value="#{tipoDespesaBean.tipoDespesas}" var="item">
 					<p:column headerText="Nome">
 						#{item.nome}
 					</p:column>					
 					<p:column headerText="Ações">						
-						<p:commandButton action="#{categoriaBean.editarProduto(item)}" title="Editar categoria" icon="ui-icon-pencil" process="@this" update="@form" />
-						<p:commandButton action="#{categoriaBean.removerCategoria(item)}" title="Remover categoria" icon="ui-icon-close" process="@this" update="@form" />
+						<p:commandButton action="#{tipoDespesaBean.editar( item )}" title="Editar tipo despesa" icon="ui-icon-pencil" process="@this" update="@form" />
+						<p:commandButton action="#{tipoDespesaBean.remover( item )}" title="Remover tipo despesa" icon="ui-icon-close" process="@this" update="@form" />
 					</p:column>
 				</p:dataTable>
 				<p:tooltip />

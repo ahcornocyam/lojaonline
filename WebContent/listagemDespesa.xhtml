@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/default.xhtml">
+	<ui:define name="content">
+		<p:messages autoUpdate="true" showDetail="true" />
+		<p:growl autoUpdate="true" showDetail="true" />
+		<p:fieldset legend="Despesa">
+			<h:form>
+				<p:dataTable value="#{despesaBean.despesas}" var="item">
+					<p:column headerText="Data">
+						<h:outputText value="#{item.data}">
+							<f:convertDateTime pattern="dd/MM/yyyy"/>
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Tipo De Despesa">
+						#{item.tipoDespesa.nome}
+					</p:column>
+					<p:column headerText="Valor">
+						<h:outputText value="#{item.valor}">
+							<f:convertNumber pattern="#,##0.00" locale="pt_BR" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Descrição">
+						#{item.descricao}
+					</p:column>
+					<p:column headerText="Ações">						
+						<p:commandButton action="#{despesaBean.editar( item )}" title="Editar Despesa" icon="ui-icon-pencil" process="@this" update="@form" />
+						<p:commandButton action="#{despesaBean.remover( item )}" title="Remover Despesa" icon="ui-icon-close" process="@this" update="@form" />
+					</p:column>
+				</p:dataTable>
+				<p:tooltip />
+			</h:form>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
+</html>
